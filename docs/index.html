@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+          <title>geoojson</title>
+          <meta property="og:url" content="https://ffoodd.github.io/geoojson/">
+          <meta property="og:title" content="geoojson">
+          <meta property="og:type" content="article">
+          <meta property="og:description"
+                name="description" content="Simple HTML page to clean geoJSON file a bit.">
+          <meta name="twitter:card" content="summary">
+        
+        <script>
+          document.documentElement.classList.remove('no-js');
+          document.documentElement.classList.add('js');
+        </script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/styles.min.css" media="all">
+        <link rel="stylesheet" href="css/print.min.css" media="print">
+    </head>
+    <body itemscope itemtype="http://schema.org/WebPage">
+      <header role="banner">
+        <h1>GeooJSON</h1>
+        <p>
+          Simple HTML page to clean geoJSON file a bit&nbsp;— inspired by
+          <a href="https://github.com/Pimentoso/GeoJSON-Attribute-Cleaner">GeoJSON Attribute Cleaner by <cite>Pimentoso</cite></a>.
+          <a href="#how-to-use">How to use?</a>
+        </p>
+      </header>
+      <main role="main" id="main" itemprop="mainContentOfPage">
+        
+        <form action="/" id="form" class="grid-3-1">
+          <div id="drop-zone">
+            <fieldset>
+              <legend class="mb-0">Original file</legend>
+              <p class="fieldset">
+                <label for="input" class="custom-file-label">Import geoJSON source</label>
+                <input type="file" id="input" name="input" accept="application/geojson,application/geo+json,application/json" class="custom-file-input" aria-describedby="input-data">
+                <small id="input-data" class="form-text text-muted mt-3">—</small>
+              </p>
+              <p class="fieldset">
+                <label for="content">Content</label>
+                <textarea id="content" name="content" rows="3" readonly aria-readonly="true"></textarea>
+              </p>
+            </fieldset>
+            <fieldset id="fieldset" class="mt-2">
+              <legend class="mb-0">Properties</legend>
+              <p class="mt-0">Choose properties to be removed from the GeoJSON dataset.</p>
+            </fieldset>
+            <fieldset class="mt-2 mb-0">
+              <legend class="mb-0">Output settings</legend>
+              <div class="grid-2">
+                <p class="fieldset">
+                  <label for="variable">
+                    Variable name
+                    <span class="label-msg-help">This variable will be used to wrap geojson datas.</span>
+                  </label>
+                  <input type="text" id="variable" name="variable" class="form-control" list="datalist">
+                  <datalist id="datalist">
+                    <option value="datasource">
+                    <option value="land">
+                  </datalist>
+                </p>
+                <p class="fieldset">
+                  <label for="filename">
+                    File name
+                    <span class="label-msg-help">Will be the name ouf your exported file.</span>
+                  </label>
+                  <input type="text" id="filename" name="filename" class="form-control" list="suggestion">
+                  <datalist id="suggestion">
+                    <option value="land">
+                    <option value="world">
+                    <option value="countries">
+                  </datalist>
+                </p>
+              </div>
+            </fieldset>
+            <p class="fieldset d-flex mt-0">
+              <button type="submit" class="ml-auto">Cleanup</button>
+            </p>
+          </div>
+          <div class="no-margin">
+            <p class="fieldset">
+              <label for="output">Result</label>
+              <textarea id="output" name="output" rows="16" readonly aria-readonly="true"></textarea>
+            </p>
+            <p class="fieldset d-flex">
+              <a class="ml-auto">Export</a>
+            </p>
+          </div>
+        </form>
+        <h2 id="how-to-use">How to use</h2>
+        <ol>
+          <li>
+            <strong>Import your GeoJSON</strong> file through the upload field or by dropping it above the form&nbsp;—
+            your GeoJSON data should appear in the content textarea and its weight be displayed beyond upload input;
+          </li>
+          <li><strong>Choose properties you want to exclude</strong>: <var>type</var> and <var>features</var> are preserved;</li>
+          <li><strong>Define variable and file names</strong>;</li>
+          <li><strong>Submit</strong> the form: result should appear in the result textarea, and be available to download thanks to the export link.</li>
+        </ol>
+        <p>
+          This page <strong>only handles features</strong>.
+          You may want to give a try to <a href="https://gdal.org/programs/ogr2ogr.html">ogr2ogr</a> to optimize GeoJSON further. Here is an example:
+        </p>
+        <pre>
+<code>ogr2ogr -t_srs EPSG:4326 -f geoJSON -lco COORDINATE_PRECISION=3 -simplify 0.04 output.geojson input.geojson</code>
+        </pre>
+        
+      </main>
+
+      
+        <script src="js/script.min.js"></script>
+      
+    </body>
+</html>

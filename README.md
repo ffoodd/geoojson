@@ -1,2 +1,2 @@
 # geoojson
-Simple HTML page to clean geoµJSON file a bit
+Simple HTML page to clean geoJSON file a bit.
