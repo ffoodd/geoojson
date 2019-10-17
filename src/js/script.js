@@ -10,7 +10,10 @@
   const variable = document.getElementById('variable');
   const filename = document.getElementById('filename');
   const output = document.getElementById('output');
-  const download = form.querySelector('a');
+  const download = document.getElementById('export');
+  const copy = document.getElementById('copy');
+
+  const clipboard = navigator.clipboard;
 
   function addEventsListener(el, eventNames, listener) {
     const events = eventNames.split(' ');
@@ -18,7 +21,6 @@
       el.addEventListener(events[i], listener, false);
     }
   }
-
 
   function createDOM(prop) {
     const template = `
@@ -75,6 +77,19 @@
   zone.addEventListener('drop', drop, false);
   input.addEventListener('change', function() {handleFile(this.files)}, false);
 
+  if (clipboard !== undefined) {
+    copy.hidden = false;
+    copy.addEventListener('click', () => {
+      clipboard.writeText(output.value)
+        .then(function() {
+          copy.classList.add('is-success');
+        }, function(error) {
+          copy.classList.add('is-error');
+          console.error(`Couldn't copy content to clipoard… Error: ${error}`);
+        });
+    });
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     const datas = JSON.parse(content.value);
@@ -115,6 +130,7 @@
     datas.features = features;
 
     const result = JSON.stringify(datas);
+    copy.disabled = false;
     output.value = `var ${name}=[${result}]`;
     download.setAttribute('download', `${file}.geojson`);
     download.href = `data:application/json,var%20${name}=[${result}]`;

@@ -36,7 +36,7 @@ module.exports = {
   },
   purge: {
     content: ['./docs/*.html'],
-    whitelistPatterns: [/^no-|^grid-|^text-/]
+    whitelistPatterns: [/^no-|^grid-|^text-|^is-/]
   },
   nunjucks: {
     path: './src/templates/'

@@ -42,9 +42,59 @@
   position: absolute !important;
 }
 
+.align-center {
+  align-self: center !important;
+}
+
 fieldset,
 .fieldset,
 form[class*="grid"] {
   margin: $gutter 0;
   max-width: none;
+}
+
+a:not([href]):not([name]) {
+  color: hsl(var(--neutral));
+  text-decoration: line-through;
+}
+
+[type="button"] {
+  background-repeat: no-repeat;
+  background-position: center right .5em;
+  background-size: 1em 1.25em;
+  border-color: currentColor;
+}
+
+.is-success {
+  background-color: hsl(var(--contrast));
+  background-image: var(--valid);
+  color: hsl(var(--success-dark));
+  text-indent: -1em;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: hsla(var(--success-light), .05);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 rem( 2 ) hsla(var(--success-light), .25);
+  }
+}
+
+.is-error {
+  background-color: hsl(var(--contrast));
+  background-image: var(--invalid);
+  color: hsl(var(--alert-dark));
+  text-indent: -1em;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: hsla(var(--alert-light), .05);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 rem( 2 ) hsla(var(--alert-light), .25);
+  }
 }
