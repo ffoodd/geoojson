@@ -131,8 +131,13 @@
 
     const result = JSON.stringify(datas);
     copy.disabled = false;
-    output.value = `var ${name}=[${result}]`;
+    if (name === '') {
+      output.value = `${result}`;
+      download.href = `data:application/json,${result}`;
+    } else {
+      output.value = `var ${name}=[${result}]`;
+      download.href = `data:application/json,var%20${name}=[${result}]`;
+    }
     download.setAttribute('download', `${file}.geojson`);
-    download.href = `data:application/json,var%20${name}=[${result}]`;
   });
 })();
