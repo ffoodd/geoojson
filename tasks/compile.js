@@ -43,7 +43,6 @@ function css() {
 
 function template() {
     return gulp.src(options.paths.src + 'templates/*.html')
-      .pipe(newer(options.paths.docs))
       .pipe(nunjucks(options.nunjucks))
       .pipe(gulp.dest(options.paths.docs));
 }

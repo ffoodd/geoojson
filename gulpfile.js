@@ -16,7 +16,8 @@ function clean() {
 
 exports.clean = clean;
 gulp.task('compile', require('./tasks/compile'));
-gulp.task('package', gulp.series( clean, gulp.parallel( 'compile' ) ) );
+gulp.task('sri',     require('./tasks/sri'));
+gulp.task('package', gulp.series( clean, gulp.parallel( 'compile' ), 'sri'));
 
 
 /**
@@ -31,7 +32,9 @@ function sync(done) {
     browser.init({
       server: {
          baseDir: options.paths.docs
-      }
+       },
+       https: true,
+       cors: true
     });
     done();
 }
@@ -41,12 +44,12 @@ function sync(done) {
  * @section Watch
  */
 function watch() {
-  gulp.watch( options.paths.src + 'scss/**/*.scss',   gulp.series( 'compile', reload ) );
-  gulp.watch( options.paths.src + 'js/**/*.js',       gulp.series( 'compile', reload ) );
+  gulp.watch( options.paths.src + 'scss/**/*.scss',   gulp.series( 'compile', 'sri', reload ) );
+  gulp.watch( options.paths.src + 'js/**/*.js',       gulp.series( 'compile', 'sri', reload ) );
   gulp.watch( options.paths.src + 'templates/*.html', gulp.series( 'compile', reload ) );
 }
 exports.watch   = watch;
-exports.default = gulp.series( 'compile', sync, watch );
+exports.default = gulp.series( 'compile', 'sri', sync, watch );
 
 
 /**

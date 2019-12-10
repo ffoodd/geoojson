@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         
           <title>geoojson</title>
           <meta property="og:url" content="https://ffoodd.github.io/geoojson/">
           <meta property="og:title" content="geoojson">
           <meta property="og:type" content="article">
-          <meta property="og:description"
-                name="description" content="Simple HTML page to clean geoJSON file a bit.">
+          <meta property="og:description" name="description" content="Simple HTML page to clean geoJSON file a bit.">
           <meta name="twitter:card" content="summary">
         
         <script>
@@ -18,14 +15,14 @@
           document.documentElement.classList.add('js');
         </script>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="css/styles.min.css" media="all">
-        <link rel="stylesheet" href="css/print.min.css" media="print">
+        <link rel="stylesheet" href="css/styles.min.css" media="all" integrity="sha384-6mRvpw88Na4NagRiNNlIqKeiN/FrkEKptG2BirgJEDwKsjhXao8DMfzyf0JHrMqP" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/print.min.css" media="print" integrity="sha384-jkBKtM3GL9e2M9NaKeKRiTREgVXTNARacfUtKdAWWGttckklVGHtPO7wUjCS9Q4x" crossorigin="anonymous">
     </head>
     <body itemscope itemtype="http://schema.org/WebPage">
       <header role="banner">
         <h1>GeooJSON</h1>
         <p>
-          Simple HTML page to clean geoJSON file a bit&nbsp;— inspired by
+          Simple HTML page to clean geoJSON file a bit — inspired by
           <a href="https://github.com/Pimentoso/GeoJSON-Attribute-Cleaner">GeoJSON Attribute Cleaner by <cite>Pimentoso</cite></a>.
           <a href="#how-to-use">How to use?</a>
         </p>
@@ -61,8 +58,8 @@
                   <input type="text" id="variable" name="variable" class="form-control" list="datalist">
                   <datalist id="datalist">
                     <option value="datasource">
-                    <option value="land">
-                  </datalist>
+                    </option><option value="land">
+                  </option></datalist>
                 </p>
                 <p class="fieldset">
                   <label for="filename">
@@ -72,9 +69,9 @@
                   <input type="text" id="filename" name="filename" class="form-control" list="suggestion">
                   <datalist id="suggestion">
                     <option value="land">
-                    <option value="world">
-                    <option value="countries">
-                  </datalist>
+                    </option><option value="world">
+                    </option><option value="countries">
+                  </option></datalist>
                 </p>
               </div>
             </fieldset>
@@ -96,7 +93,7 @@
         <h2 id="how-to-use">How to use</h2>
         <ol>
           <li>
-            <strong>Import your GeoJSON</strong> file through the upload field or by dropping it above the form&nbsp;—
+            <strong>Import your GeoJSON</strong> file through the upload field or by dropping it above the form —
             your GeoJSON data should appear in the content textarea and its weight be displayed beyond upload input;
           </li>
           <li><strong>Choose properties you want to exclude</strong>: <var>type</var> and <var>features</var> are preserved;</li>
@@ -107,14 +104,14 @@
           This page <strong>only handles features</strong>.
           You may want to give a try to <a href="https://gdal.org/programs/ogr2ogr.html">ogr2ogr</a> to optimize GeoJSON further. Here is an example:
         </p>
-        <pre>
-<code>ogr2ogr -t_srs EPSG:4326 -f geoJSON -lco COORDINATE_PRECISION=3 -simplify 0.04 output.geojson input.geojson</code>
+        <pre><code>ogr2ogr -t_srs EPSG:4326 -f geoJSON -lco COORDINATE_PRECISION=3 -simplify 0.04 output.geojson input.geojson</code>
         </pre>
         
       </main>
 
       
-        <script src="js/script.min.js"></script>
+        <script src="js/script.min.js" integrity="sha384-zcx76sCjR+pLeR2RME03hqcJX4O15aw6nRDI9k70vN/7LFnpcb+n+0/yZsMvPvTh" crossorigin="anonymous"></script>
       
-    </body>
-</html>
+    
+
+</body></html>
