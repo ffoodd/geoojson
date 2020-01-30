@@ -83,8 +83,10 @@
       clipboard.writeText(output.value)
         .then(function() {
           copy.classList.add('is-success');
+          copy.textContent = 'Copied!';
         }, function(error) {
           copy.classList.add('is-error');
+          copy.textContent = 'Error…';
           console.error(`Couldn't copy content to clipoard… Error: ${error}`);
         });
     });
